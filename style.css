@@ -75,3 +75,19 @@
 #contact {
     padding-bottom: 4rem;
 }
+.aboutImagebig {
+
+}
+.aboutImagesmall{
+
+}
+@media (min-width: 1000px){
+    .aboutImagebig {
+        display: none;
+    }
+}
+@media (max-width: 999px){
+    .aboutImagesmall{
+        display: none;
+    }
+}
