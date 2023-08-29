@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Islamic Search</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        margin: 20px;
+      }
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Islamic Search</h1>
+      <input type="text" id="userQuery" placeholder="Enter your query" />
+      <button onclick="search()">Search</button>
+      <ol id="resultList"></ol>
+    </div>
+
+    <script>
+      async function search() {
+        const userQuery = document.getElementById("userQuery").value;
+
+        // Clear previous results
+        document.getElementById("resultList").innerHTML = "";
+        console.log("hello");
+        const response = await fetch(
+          "https://islamicsearch-4dbe9a36a60c.herokuapp.com/Quran",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ user_query: userQuery }),
+          }
+        );
+
+        const data = await response.json();
+
+        console.log(data["documents"]);
+        if (data && Array.isArray(data["documents"])) {
+          const ul = document.getElementById("resultList");
+          data["documents"][0].forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            ul.appendChild(li);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
