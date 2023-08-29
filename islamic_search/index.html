@@ -18,7 +18,13 @@
   <body>
     <div class="container">
       <h1>Islamic Search</h1>
-      <input type="text" id="userQuery" placeholder="Enter your query" />
+      <input
+        style="width: 80%; height: 30px"
+        type="text"
+        id="userQuery"
+        placeholder="Enter your query"
+        maxlength="100"
+      />
       <button onclick="search()">Search</button>
       <ol id="resultList"></ol>
     </div>
